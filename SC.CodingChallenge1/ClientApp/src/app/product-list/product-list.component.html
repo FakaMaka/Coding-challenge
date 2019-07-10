@@ -1,0 +1,27 @@
+<h1>Products list</h1>
+
+<p *ngIf="!products"><em>Loading...</em></p>
+
+<button style="float:right" [routerLink]="['/details', 0]">Add product</button>
+
+<table class='table table-striped' *ngIf="products">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Active</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products" [routerLink]="['/details', product.id]">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.category }}</td>
+      <td>{{ product.isActive }}</td>
+      <td>{{ product.price }}</td>
+    </tr>
+  </tbody>
+</table>
+

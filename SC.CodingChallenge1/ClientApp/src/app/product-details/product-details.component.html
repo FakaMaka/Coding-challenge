@@ -1,0 +1,51 @@
+<h1>Product details</h1>
+
+<p *ngIf="!item"><em>Loading...</em></p>
+
+<form *ngIf="item" #productDetailsForm="ngForm" (ngSubmit)="onSubmit(productDetailsForm)">
+
+  <input type="hidden" name="id" #id="ngModel" [(ngModel)]="item.id">
+  <table>
+    <tr>
+      <td>
+        <label>Name</label>
+      </td>
+      <td>
+        <input type="text" name="name" #name="ngModel" [(ngModel)]="item.name">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Category</label>
+      </td>
+      <td>
+        <input type="text" name="category" #category="ngModel" [(ngModel)]="item.category">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Active</label>
+      </td>
+      <td>
+        <input type="checkbox" name="isActive" #isActive="ngModel" [(ngModel)]="item.isActive">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Price</label>
+      </td>
+      <td>
+        <input type="text" name="price" #price="ngModel" [(ngModel)]="item.price">
+      </td>
+  </table>
+  <br>
+  <div>
+    <button type="submit">
+      Submit
+    </button>
+  </div>
+</form>
+<br>
+<button (click)="deleteProduct(item.id)">
+  Delete current product
+</button>
