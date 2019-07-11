@@ -11,7 +11,10 @@
         <label>Name</label>
       </td>
       <td>
-        <input type="text" name="name" #name="ngModel" [(ngModel)]="item.name">
+        <input type="text" name="name" #name="ngModel" [(ngModel)]="item.name" required>
+        <div [hidden]="name.valid || name.untouched" style="color:red">
+          Field required
+        </div>
       </td>
     </tr>
     <tr>
@@ -19,7 +22,10 @@
         <label>Category</label>
       </td>
       <td>
-        <input type="text" name="category" #category="ngModel" [(ngModel)]="item.category">
+        <input type="text" name="category" #category="ngModel" [(ngModel)]="item.category" required>
+        <div [hidden]="category.valid || category.untouched" style="color:red">
+          Field required
+        </div>
       </td>
     </tr>
     <tr>
@@ -35,7 +41,10 @@
         <label>Price</label>
       </td>
       <td>
-        <input type="text" name="price" #price="ngModel" [(ngModel)]="item.price">
+        <input type="text" name="price" #price="ngModel" [(ngModel)]="item.price" required>
+        <div [hidden]="price.valid || price.untouched" style="color:red">
+          Field required
+        </div>
       </td>
   </table>
   <br>
@@ -46,6 +55,4 @@
   </div>
 </form>
 <br>
-<button (click)="deleteProduct(item.id)">
-  Delete current product
-</button>
+

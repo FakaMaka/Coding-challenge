@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Product } from '../Domain/product-model';
-import { ProductProvider } from '../Domain/product-provider.service';
+import { Product } from '../domain/product';
+import { ProductProvider } from '../domain/product-provider.service';
+import { ProductUpdater } from '../domain/product-updater.service';
 
 @Component({
   selector: 'app-product-list',
@@ -17,9 +18,15 @@ export class ProductListComponent {
     http: HttpClient,
     @Inject('BASE_URL') baseUrl: string,
     private _router: Router,
-    private _productProvider: ProductProvider, ) {
+    private _productProvider: ProductProvider,
+    private _productUpdater: ProductUpdater,) {
     this._productProvider.getProducts().then(result => {
       this.products = result;
     }, error => console.error(error));
+  }
+
+  async deleteProduct(itemId: number) {
+    await this._productUpdater.deleteProduct(itemId);
+    this._router.navigate(['/']);
   }
 }

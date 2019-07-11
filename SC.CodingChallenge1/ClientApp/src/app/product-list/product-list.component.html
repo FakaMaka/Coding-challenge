@@ -2,7 +2,7 @@
 
 <p *ngIf="!products"><em>Loading...</em></p>
 
-<button style="float:right" [routerLink]="['/details', 0]">Add product</button>
+<button style="float:right" [routerLink]="['/details', 'newProduct']">Add product</button>
 
 <table class='table table-striped' *ngIf="products">
   <thead>
@@ -12,6 +12,7 @@
       <th>Category</th>
       <th>Active</th>
       <th>Price</th>
+      <th>Delete?</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,11 @@
       <td>{{ product.category }}</td>
       <td>{{ product.isActive }}</td>
       <td>{{ product.price }}</td>
+      <td>
+        <button (click)="deleteProduct(item.id)">
+          Delete current product
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

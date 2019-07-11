@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductUpdater } from './Domain/product-updater.service';
+import { ProductUpdater } from './domain/product-updater.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

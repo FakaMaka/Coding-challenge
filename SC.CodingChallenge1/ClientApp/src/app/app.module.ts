@@ -11,9 +11,9 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
-import { ProductProvider } from './Domain/product-provider.service';
-import { ProductUpdater } from './Domain/product-updater.service';
-import { Product } from './Domain/product-model';
+import { ProductProvider } from './domain/product-provider.service';
+import { ProductUpdater } from './domain/product-updater.service';
+import { Product } from './domain/product';
 
 @NgModule({
   declarations: [

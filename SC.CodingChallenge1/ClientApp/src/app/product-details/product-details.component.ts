@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProductProvider } from '../Domain/product-provider.service';
-import { ProductUpdater } from '../Domain/product-updater.service';
-import { Product } from '../Domain/product-model';
+import { ProductProvider } from '../domain/product-provider.service';
+import { ProductUpdater } from '../domain/product-updater.service';
+import { Product } from '../domain/product';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -13,8 +13,6 @@ import { NgForm } from '@angular/forms';
 export class ProductDetailsComponent implements OnInit {
 
   item: Product = new Product();
-  editProduct: Product = new Product();
-  private _itemId: number;
 
   constructor(private _route: ActivatedRoute,
     private _router: Router,
@@ -24,17 +22,13 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    var itemId;
     this._route.params.subscribe(params => {
-      this._itemId = + params['itemId'];
+      itemId = + params['itemId'];
     });
-    if (this._itemId != 0) {
-      this._productProvider.getProductById(this._itemId).then(result => this.item = result, error => console.error(error));
+    if (typeof itemId === 'number') {
+      this._productProvider.getProductById(itemId).then(result => this.item = result, error => console.error(error));
     }
-  }
-
-  async deleteProduct(itemId: number) {
-    await this._productUpdater.deleteProduct(itemId);
-    this._router.navigate(['/']);
   }
 
   async onSubmit(form: NgForm) {
