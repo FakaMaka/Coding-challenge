@@ -16,14 +16,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products" [routerLink]="['/details', product.id]">
-      <td>{{ product.id }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.category }}</td>
-      <td>{{ product.isActive }}</td>
-      <td>{{ product.price }}</td>
+    <tr *ngFor="let product of products">
+      <td [routerLink]="['/details', product.id]">{{ product.id }}</td>
+      <td [routerLink]="['/details', product.id]">{{ product.name }}</td>
+      <td [routerLink]="['/details', product.id]">{{ product.category }}</td>
+      <td [routerLink]="['/details', product.id]">{{ product.isActive }}</td>
+      <td [routerLink]="['/details', product.id]">{{ product.price }}</td>
       <td>
-        <button (click)="deleteProduct(item.id)">
+        <button (click)="deleteProduct(product.id)">
           Delete current product
         </button>
       </td>

@@ -49,9 +49,12 @@
   </table>
   <br>
   <div>
-    <button type="submit">
+    <button [disabled]="name.invalid || category.invalid || price.invalid" type="submit">
       Submit
     </button>
+    <div [hidden]="name.valid && category.valid && price.valid" style="color:red">
+      Fields "Name", "Category", "Price" are required!
+    </div>
   </div>
 </form>
 <br>

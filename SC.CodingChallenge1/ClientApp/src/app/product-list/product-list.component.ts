@@ -27,6 +27,6 @@ export class ProductListComponent {
 
   async deleteProduct(itemId: number) {
     await this._productUpdater.deleteProduct(itemId);
-    this._router.navigate(['/']);
+    location.reload();
   }
 }
